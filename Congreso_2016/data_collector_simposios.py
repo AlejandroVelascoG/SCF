@@ -24,12 +24,11 @@ univ = "Afiliación" # para enviar a lista "institucion"
 pon = "Ponente" # para enviar a lista "nombres"
 
 
-# for archivo in os.listdir('Simposios 2016'):
-# 	workbook = read.open_workbook(archivo)
-# 	nombres_hojas = workbook.sheet_names()
-#
-# 	for i in nombres_hojas:
-#         if i == 'Sheet1':
-#             print(i.nrows())
-#
-# print(nombres)
+for archivo in os.listdir('Simposios 2016'): # recorre todos los archivos
+	if archivo.endswith('xlsx'): # si es un excel
+		workbook = read.open_workbook(archivo) # abre el archivo
+		nombres_hojas = workbook.sheet_names() # guarda los nombres de las hojas en una lista
+		for i in nombres_hojas: # recorre la lista de hojas del archivo
+			if i == 'Sheet1': # si la hoja se llama Sheet1
+				hoja = workbook.sheet_by_name(i) # abre la hoja
+				print(archivo + ':' + str(hoja.nrows)) # imprime el número de FILAS
