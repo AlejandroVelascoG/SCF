@@ -47,19 +47,24 @@ for archivo in os.listdir('Simposios 2016'): # recorre todos los archivos
 					if pon in i:
 						if fila2[fila1.index(i)] != '':
 							nombres.append(fila2[fila1.index(i)])
-					# if univ in i:
-					# 	if fila2[fila1.index(i)] != '':
-					# 		institucion.append(fila2[fila1.index(i)])
-					# if tit in i:
-					# 	if fila2[fila1.index(i)] != '':
-					# 		actividad.append(fila2[fila1.index(i)])
+					if univ in i:
+						if fila2[fila1.index(i)] != '':
+							institucion.append(fila2[fila1.index(i)])
+					if tit in i:
+						if fila2[fila1.index(i)] != '':
+							actividad.append(fila2[fila1.index(i)])
+
+print(len(nombres))
+print(len(institucion))
+print(len(actividad))
 
 
-columnas = pd.DataFrame({'1. Nombre': nombres)
 
-# columnas = pd.DataFrame({'1. Nombre': nombres, '2. Institución': institucion,
-#                         '3. Título de la actividad': actividad, '4. Temática': simposio})
-
-writer = ExcelWriter('Excel_simposios_2016.xlsx')
-columnas.to_excel(writer,'Hoja1',index=False)
-writer.save()
+# columnas = pd.DataFrame({'1. Nombre': nombres)
+#
+# # columnas = pd.DataFrame({'1. Nombre': nombres, '2. Institución': institucion,
+# #                         '3. Título de la actividad': actividad, '4. Temática': simposio})
+#
+# writer = ExcelWriter('Excel_simposios_2016.xlsx')
+# columnas.to_excel(writer,'Hoja1',index=False)
+# writer.save()
