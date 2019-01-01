@@ -19,7 +19,7 @@ simposio = []
 
 univ = "Afil" # para enviar a lista "institucion"
 pon = "Ponente" # para enviar a lista "nombres"
-tit = "ulo" # para enviar a la lista "actividad"
+tit = "ulo ponen" # para enviar a la lista "actividad"
 
 
 for archivo in os.listdir('Simposios 2016'): # recorre todos los archivos
@@ -46,6 +46,7 @@ for archivo in os.listdir('Simposios 2016'): # recorre todos los archivos
 				for i in fila1:
 					if pon in i:
 						if fila2[fila1.index(i)] != '':
+							# if fila2[fila1.index(i)] not in nombres:
 							nombres.append(fila2[fila1.index(i)])
 					if univ in i:
 						if fila2[fila1.index(i)] != '':
@@ -55,16 +56,17 @@ for archivo in os.listdir('Simposios 2016'): # recorre todos los archivos
 							actividad.append(fila2[fila1.index(i)])
 
 print(len(nombres))
+print(nombres)
 print(len(institucion))
 print(len(actividad))
 
 
 
-# columnas = pd.DataFrame({'1. Nombre': nombres)
-#
-# # columnas = pd.DataFrame({'1. Nombre': nombres, '2. Institución': institucion,
-# #                         '3. Título de la actividad': actividad, '4. Temática': simposio})
-#
-# writer = ExcelWriter('Excel_simposios_2016.xlsx')
+# columnas = pd.DataFrame({'1. Institución': institucion, '2. Título de la actividad': actividad})
+# #
+# # # columnas = pd.DataFrame({'1. Nombre': nombres, '2. Institución': institucion,
+# # #                         '3. Título de la actividad': actividad, '4. Temática': simposio})
+# #
+# writer = ExcelWriter('BETSY.xlsx')
 # columnas.to_excel(writer,'Hoja1',index=False)
 # writer.save()
