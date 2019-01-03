@@ -62,11 +62,21 @@ print(len(actividad))
 
 
 
-# columnas = pd.DataFrame({'1. Institución': institucion, '2. Título de la actividad': actividad})
-# #
-# # # columnas = pd.DataFrame({'1. Nombre': nombres, '2. Institución': institucion,
-# # #                         '3. Título de la actividad': actividad, '4. Temática': simposio})
-# #
+univ_ponen = pd.DataFrame({'Institución': institucion, 'Título de la actividad': actividad})
+
+# columnas = pd.DataFrame({'1. Nombre': nombres, '2. Institución': institucion,
+#                          '3. Título de la actividad': actividad, '4. Temática': simposio})
+
+doc1 = ExcelWriter('UNIV_Y_PONEN.xlsx')
+univ_ponen.to_excel(doc1,'Hoja1',index=False)
+doc1.save()
+
+nom = pd.DataFrame({'Nombres': nombres})
+
+doc2 = ExcelWriter('NOMBRES.xlsx')
+nom.to_excel(doc2, 'Hoja1', index=False)
+doc2.save()
+
 # writer = ExcelWriter('BETSY.xlsx')
 # columnas.to_excel(writer,'Hoja1',index=False)
 # writer.save()
