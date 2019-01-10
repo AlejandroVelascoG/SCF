@@ -16,7 +16,7 @@ titulo = []
 tema = []
 
 
-workbook = read.open_workbook('PONENTES congreso 2006.xls')
+workbook = read.open_workbook('PONENTES congreso 2006_tema.xls')
 nombres_hojas = workbook.sheet_names()
 
 hoja = workbook.sheet_by_name('Hoja1')
