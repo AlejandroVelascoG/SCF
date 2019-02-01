@@ -33,10 +33,11 @@ for archivo in os.listdir('Simposios 2016'): # recorre todos los archivos
 
 				# COORDINADORES
 
-				nombres.append(fila2[1]) # guarda el nombre del coordinador en la lista de nombres
-				institucion.append(fila2[4]) # guarda la universidad de apoyo en la lista de instituciones
-				coor = 'Coordinador: ' + fila2[0] # string para anotar que es el coordinador del simposio
-				actividad.append(coor) # guarda el string en la lista de actividad
+				#nombres.append(fila2[1]) # guarda el nombre del coordinador en la lista de nombres
+				#institucion.append(fila2[4]) # guarda la universidad de apoyo en la lista de instituciones
+				#coor = 'Coordinador: ' + fila2[0] # string para anotar que es el coordinador del simposio
+				#actividad.append(coor) # guarda el string en la lista de actividad
+				
 				simposio.append(fila2[0])
 
 				# PONENTES
@@ -46,7 +47,6 @@ for archivo in os.listdir('Simposios 2016'): # recorre todos los archivos
 				for i in fila1:
 					if pon in i:
 						if fila2[fila1.index(i)] != '':
-							# if fila2[fila1.index(i)] not in nombres:
 							nombres.append(fila2[fila1.index(i)])
 					if univ in i:
 						if fila2[fila1.index(i)] != '':
@@ -56,27 +56,39 @@ for archivo in os.listdir('Simposios 2016'): # recorre todos los archivos
 							actividad.append(fila2[fila1.index(i)])
 
 print(len(nombres))
-print(nombres)
+#print(nombres)
 print(len(institucion))
 print(len(actividad))
 
 
 
-univ_ponen = pd.DataFrame({'Institución': institucion, 'Título de la actividad': actividad})
+# universidad_y_titulo = pd.DataFrame({'Institución': institucion, 'Título de la actividad': actividad})
 
-# columnas = pd.DataFrame({'1. Nombre': nombres, '2. Institución': institucion,
-#                          '3. Título de la actividad': actividad, '4. Temática': simposio})
+# # columnas = pd.DataFrame({'1. Nombre': nombres, '2. Institución': institucion,
+# #                          '3. Título de la actividad': actividad, '4. Temática': simposio})
 
-doc1 = ExcelWriter('UNIV_Y_PONEN.xlsx')
-univ_ponen.to_excel(doc1,'Hoja1',index=False)
-doc1.save()
+# doc1 = ExcelWriter('UNIVERSIDAD_Y_TITULO.xlsx')
+# universidad_y_titulo.to_excel(doc1,'Hoja1',index=False)
+# doc1.save()
 
-nom = pd.DataFrame({'Nombres': nombres})
 
-doc2 = ExcelWriter('NOMBRES.xlsx')
-nom.to_excel(doc2, 'Hoja1', index=False)
-doc2.save()
+##################################
 
-# writer = ExcelWriter('BETSY.xlsx')
-# columnas.to_excel(writer,'Hoja1',index=False)
-# writer.save()
+
+# nom = pd.DataFrame({'Nombres': nombres})
+
+# doc2 = ExcelWriter('NOMBRES.xlsx')
+# nom.to_excel(doc2, 'Hoja1', index=False)
+# doc2.save()
+
+# ins = pd.DataFrame({'Universidades': institucion})
+
+# doc2 = ExcelWriter('UNIVERSIDADES.xlsx')
+# nom.to_excel(doc2, 'Hoja1', index=False)
+# doc2.save()
+
+# titulo = pd.DataFrame({'Títulos': actividad})
+
+# doc3 = ExcelWriter('TITULOS.xlsx')
+# titulo.to_excel(doc2, 'Hoja1', index=False)
+# doc3.save()
