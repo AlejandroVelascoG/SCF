@@ -59,6 +59,7 @@ print(len(nombres))
 #print(nombres)
 print(len(institucion))
 print(len(actividad))
+print(simposio)
 
 
 
@@ -75,20 +76,20 @@ print(len(actividad))
 ##################################
 
 
-# nom = pd.DataFrame({'Nombres': nombres})
+nom = pd.DataFrame({'Nombres': nombres, 'Título de la actividad': actividad})
 
-# doc2 = ExcelWriter('NOMBRES.xlsx')
-# nom.to_excel(doc2, 'Hoja1', index=False)
-# doc2.save()
+doc1 = ExcelWriter('NOMBRES.xlsx')
+nom.to_excel(doc1, 'Hoja1', index=False)
+doc1.save()
 
-# ins = pd.DataFrame({'Universidades': institucion})
+ins = pd.DataFrame({'Universidades': institucion})
 
-# doc2 = ExcelWriter('UNIVERSIDADES.xlsx')
-# nom.to_excel(doc2, 'Hoja1', index=False)
-# doc2.save()
+doc2 = ExcelWriter('UNIVERSIDADES.xlsx')
+ins.to_excel(doc2, 'Hoja1', index=False)
+doc2.save()
 
 # titulo = pd.DataFrame({'Títulos': actividad})
 
 # doc3 = ExcelWriter('TITULOS.xlsx')
-# titulo.to_excel(doc2, 'Hoja1', index=False)
+# titulo.to_excel(doc3, 'Hoja1', index=False)
 # doc3.save()
