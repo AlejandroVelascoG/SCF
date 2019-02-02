@@ -49,6 +49,6 @@ for archivo in os.listdir('Mesas tematicas 2016'):
 columnas = pd.DataFrame({'1. Nombres': nombres, '2. Apellidos': apellidos, '3. Institución': institucion,
                         '4. Título de la actividad': titulo, '5. Temática': tema})
 
-writer = ExcelWriter('Excel_mesas_2016.xlsx')
+writer = ExcelWriter('DATOS_MESAS_2016.xlsx')
 columnas.to_excel(writer,'Hoja1',index=False)
 writer.save()
