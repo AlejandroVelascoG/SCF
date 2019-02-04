@@ -52,9 +52,8 @@ for archivo in os.listdir('Simposios 2016'): # recorre todos los archivos
 				for i in range(len(aux)):
 					simposio.append(fila2[0])
 
-nom = pd.DataFrame({'Nombres': nombres, 'Título de la actividad': actividad, 'Temática': simposio, 'Institución': institucion})
+nom = pd.DataFrame({'1. Nombres': nombres, '2. Institución': institucion, '3. Título de la actividad': actividad, 'Temática': simposio})
 
 doc1 = ExcelWriter('DATOS_SIMPOSIOS_2016.xlsx')
 nom.to_excel(doc1, 'Hoja1', index=False)
 doc1.save()
-
