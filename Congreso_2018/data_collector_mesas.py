@@ -32,22 +32,20 @@ for i in range(len(lista_hojas)): # por cada hoja en el libro
             
                 for c in celda: # por cada carácter en la celda
                     if(alm not in celda and celda != ''):
+                    	if alm not in columna[k-1]:
 
-                    	##### SI ALM IN FILA-1 ?
-
-
-                        if i == len(celda)-1: # si es el último carácte
-                       		dato += c
-                       		contenido.append(dato) # mete el string en la lista de contenido
-                       		lista_celdas.append(contenido) # mete la lista de contenido en la lista de todas las celdas
-                       		contenido = [] # vacía la lista de contenido
-                       		dato = '' # vacía el string
-                       	if c != '\n': # si el carácter no es un linebreak
-                       		dato += c # añade el carácter al string
-                       	elif c == '\n': # si el carácter es un linebreak
-                       		contenido.append(dato)
-                       		dato = '' # vacía el string
-                    i+=1
+	                        if i == len(celda)-1: # si es el último carácte
+	                       		dato += c
+	                       		contenido.append(dato) # mete el string en la lista de contenido
+	                       		lista_celdas.append(contenido) # mete la lista de contenido en la lista de todas las celdas
+	                       		contenido = [] # vacía la lista de contenido
+	                       		dato = '' # vacía el string
+	                       	if c != '\n': # si el carácter no es un linebreak
+	                       		dato += c # añade el carácter al string
+	                       	elif c == '\n': # si el carácter es un linebreak
+	                       		contenido.append(dato)
+	                       		dato = '' # vacía el string
+	                       	i+=1
 
 
 #print(lista_celdas)
@@ -63,7 +61,14 @@ for i in lista_celdas:
 		titulo.append(i[0])
 		nombres.append(i[1])
 		institucion.append(i[2])
-print(institucion)
+
+for i in lista_celdas:
+	print(i)
+
+
+print(len(institucion))
+print(len(nombres))
+print(len(titulo))
 
 
 		
