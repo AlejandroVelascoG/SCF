@@ -2,6 +2,8 @@
 
 import xlrd as read
 import pandas as pd
+from pandas import ExcelFile
+from pandas import ExcelWriter
 
 nombres = []
 titulo = []
@@ -18,59 +20,64 @@ for i in range(len(lista_hojas)): # por cada hoja en el libro
 
     for j in range(2, hoja.ncols): # recorre desde la tercera columna hasta la última
 
-            columna = hoja.col_values(j,1) # crea una lista con lo que hay en la columna desde la segunda celda
+            columna = hoja.col_values(j,0) # crea una lista con lo que hay en la columna desde la segunda celda
 
             for k in range(hoja.nrows-1): # por cada celda de la columna
 
                 celda = columna[k] # elige la celda
-                #print(celda)
                 dato = '' # crea un string vacío
                 contenido = [] # crea la lista que albergará los tres datos
                 i = 0
                 alm = 'Almuerzo'
+                aux = ['-----', '------', '------']
 
-            
-                for c in celda: # por cada carácter en la celda
+
+                for c in celda:
                     if(alm not in celda and celda != ''):
-                    	if alm not in columna[k-1]:
-
-	                        if i == len(celda)-1: # si es el último carácte
-	                       		dato += c
-	                       		contenido.append(dato) # mete el string en la lista de contenido
-	                       		lista_celdas.append(contenido) # mete la lista de contenido en la lista de todas las celdas
-	                       		contenido = [] # vacía la lista de contenido
-	                       		dato = '' # vacía el string
-	                       	if c != '\n': # si el carácter no es un linebreak
-	                       		dato += c # añade el carácter al string
-	                       	elif c == '\n': # si el carácter es un linebreak
-	                       		contenido.append(dato)
-	                       		dato = '' # vacía el string
-	                       	i+=1
+                        if i == len(celda)-1:
+                            dato += c
+                            contenido.append(dato) # mete el string en la lista de contenido
+                            lista_celdas.append(contenido) # mete la lista de contenido en la lista de todas las celda
+                            contenido = [] # vacía la lista de contenido
+                            dato = ''
+                            if(k==0):
+                                lista_celdas.append(aux)
+                        if c != '\n': # si el carácter no es un linebreak
+                            dato += c # añade el carácter al string
+                        elif c == '\n': # si el carácter es un linebreak
+                            contenido.append(dato)
+                            dato = '' # vacía el string
+                        i+=1
 
 
 #print(lista_celdas)
 
-#for i in lista_celdas:
-#	print len(i)
+for i in lista_celdas:
+    if len(i) == 4:
+        cat_ins = i[2] + ' / ' + i[3]
+        aux = [i[0], i[1], cat_ins]
+        lista_celdas.append(aux)
+        lista_celdas.remove(i)
+    if len(i) < 3:
+        i.append('empty')
 
 for i in lista_celdas:
-	if len(i) == 4:
-		cat_ins = i[2] + ' / ' + i[3]
-		institucion.append(cat_ins)
-	elif len(i) == 3:
-		titulo.append(i[0])
-		nombres.append(i[1])
-		institucion.append(i[2])
+    if(len(i) == 2):
+        i.append('empty')
 
 for i in lista_celdas:
-	print(i)
-
+    titulo.append(i[0])
+    nombres.append(i[1])
+    institucion.append(i[2])
 
 print(len(institucion))
 print(len(nombres))
 print(len(titulo))
 
 
-		
-# #lineas = celda.readlines()
-# print(lista)
+columnas = pd.DataFrame({'1. Nombres': nombres, '2. Institución': institucion,
+                        '3. Título de la actividad': titulo})
+
+writer = ExcelWriter('DATOS_MESAS_2018.xlsx')
+columnas.to_excel(writer,'Hoja1',index=False)
+writer.save()
