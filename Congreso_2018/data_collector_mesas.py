@@ -22,7 +22,7 @@ for i in range(len(lista_hojas)): # por cada hoja en el libro
 
             columna = hoja.col_values(j,0) # crea una lista con lo que hay en la columna desde la segunda celda
 
-            for k in range(hoja.nrows-1): # por cada celda de la columna
+            for k in range(hoja.nrows): # por cada celda de la columna
 
                 celda = columna[k] # elige la celda
                 dato = '' # crea un string vacío
